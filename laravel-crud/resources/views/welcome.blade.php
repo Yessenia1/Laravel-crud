@@ -194,7 +194,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                         </div>
-                        <span class="text-2xl font-bold">ItemsManager</span>
+                        <span class="text-2xl font-bold">ItemsManager CL16</span>
                     </div>
                     <p class="text-gray-400 leading-relaxed max-w-md">
                         La plataforma de gestión de ítems más avanzada del mercado. 
