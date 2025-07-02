@@ -1,0 +1,32 @@
+name: 🚀 Deploy Laravel to AWS EC2
+
+on:
+  push:
+    branches:
+      - main  # Cambia si tu rama principal tiene otro nombre
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Deploy to EC2 via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: 13.59.135.242   # ❗ Ejemplo: 3.92.123.10
+          username: ubuntu
+          key: ${{ secrets.EC2_SSH_KEY }}
+          port: 22
+          script: |
+            cd /var/www/Laravel-crud/laravel-crud
+            git pull origin main
+            composer install --no-interaction --prefer-dist --optimize-autoloader
+            php artisan migrate --force
+            php artisan config:cache
+            php artisan route:cache
+            php artisan view:cache
+            sudo systemctl restart php8.3-fpm
+            sudo systemctl restart nginx
